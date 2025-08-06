@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -6,11 +7,12 @@ public class PlayerMovement : MonoBehaviour
     public float forwardSpeed = 5f;
     public float laneChangeSpeed = 10f;
     public float jumpForce = 20f;
+    public float diveForce = 20f;
     public float gravity = 30f;
 
     [Header("Lane Settings")]
-    public float laneDistance = 3f; // Distance between lanes
-    private int currentLane = 1; // 0 = left, 1 = middle, 2 = right
+    public float laneDistance = 3f; 
+    private int currentLane = 1;
     private bool isChangingLanes = false;
 
     private CharacterController controller;
@@ -45,7 +47,6 @@ public class PlayerMovement : MonoBehaviour
             moveDirection.y -= gravity * Time.deltaTime;
         }
 
-        // Handle lane switching input
         if (!isChangingLanes)
         {
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
@@ -66,7 +67,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        // Move toward target lane on X axis
         float currentX = transform.position.x;
         if (Mathf.Abs(currentX - targetX) > 0.05f)
         {
@@ -76,12 +76,16 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            // Snap to lane when close enough
             Vector3 pos = transform.position;
             pos.x = targetX;
             transform.position = pos;
             moveDirection.x = 0;
             isChangingLanes = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            StartCoroutine(FlyDownAndUp());
         }
 
         controller.Move(moveDirection * Time.deltaTime);
@@ -90,5 +94,36 @@ public class PlayerMovement : MonoBehaviour
     void SetTargetLane()
     {
         targetX = (currentLane - 1) * laneDistance;
+    }
+
+    IEnumerator FlyDownAndUp()
+    {
+        float duration = 0.3f;
+        float flyHeight = 2f;
+        float targetY = 0f;
+
+        Vector3 startPos = transform.position;
+        Vector3 downPos = new Vector3(startPos.x, targetY, startPos.z);
+
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            transform.position = Vector3.Lerp(startPos, downPos, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = downPos;
+
+        yield return new WaitForSeconds(0.2f);
+
+        elapsed = 0f;
+        Vector3 upPos = new Vector3(startPos.x, flyHeight, startPos.z);
+        while (elapsed < duration)
+        {
+            transform.position = Vector3.Lerp(downPos, upPos, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = upPos;
     }
 }
