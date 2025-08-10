@@ -3,16 +3,18 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public Transform targetToFollow;
-
     public Vector3 fixed_dist;
 
-    // gets initiated after Update is activated
     void LateUpdate()
     {
         if (targetToFollow != null)
         {
-            // constant that the camera will follow
-            transform.position = targetToFollow.position + fixed_dist;
+            Vector3 currentPos = transform.position;
+
+            // Follow only forward movement (Z)
+            currentPos.z = targetToFollow.position.z + fixed_dist.z;
+
+            transform.position = currentPos;
         }
-    } 
+    }
 }
