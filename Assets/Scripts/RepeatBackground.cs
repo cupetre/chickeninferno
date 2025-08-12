@@ -8,44 +8,32 @@ public class RepeatBackground : MonoBehaviour
     public GameObject chunkPrefab; 
     public int initialChunks = 2;
 
-    private Queue<GameObject> activeChunks = new Queue<GameObject>();
-
+    private Queue<GameObject> chunkPool = new Queue<GameObject>();
+    private GameObject lastChunk;
     void Start()
     {
-        for (int i = 0; i < initialChunks; i++)
+        for (int i = 0; i < poolSize; i++)
         {
             Vector3 prefabPos = chunkPrefab.transform.position;
             Vector3 spawnPos = new Vector3(0, prefabPos.y, i * chunkLength);
-            GameObject newChunk = Instantiate(chunkPrefab, spawnPos, Quaternion.identity, transform);
-            activeChunks.Enqueue(newChunk);
+            GameObject chunk = Instantiate(chunkPrefab, spawnPos, Quaternion.identity, transform);
+            lastChunk = chunk;
         }
     }
 
     void Update()
     {
-        GameObject firstChunk = activeChunks.Peek();
+        GameObject firstChunk = chunkPool.Peek();
 
         if (player.position.z > firstChunk.transform.position.z + chunkLength)
         {
-            GameObject oldChunk = activeChunks.Dequeue();
-            Destroy(oldChunk);
+            chunkPool.Dequeue(); //we get rid of the first one in teh q
 
-            GameObject lastChunk = null;
-            foreach (GameObject chunk in activeChunks)
-                lastChunk = chunk;
+            Vector3 newPos = lastChunk.transform.position + new Vector3(0, 0, chunkLength);
+            firstChunk.transform.position = newPos;
 
-            Vector3 spawnPos;
-            if (lastChunk != null)
-            {
-                spawnPos = lastChunk.transform.position + new Vector3(0, 0, chunkLength);
-            }
-            else
-            {
-                spawnPos = new Vector3(0, 0, player.position.z + chunkLength);
-            }
-
-            GameObject newChunk = Instantiate(chunkPrefab, spawnPos, Quaternion.identity, transform);
-            activeChunks.Enqueue(newChunk);
+            chunkPool.Enqueue(firstChunk);
+            lastChunk = firstChunk;
         }
     }
 }
