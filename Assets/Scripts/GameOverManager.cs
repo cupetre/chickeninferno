@@ -7,9 +7,12 @@ public class GameOverManager : MonoBehaviour
 {
     public TextMeshProUGUI finalTimeText;
     public TextMeshProUGUI gameOverText;
+    public GameObject restartButton;
 
-    public void Start() {
+    public void Start()
+    {
         gameOverText.gameObject.SetActive(false);
+        restartButton.SetActive(false);
     }
 
     public void ShowGameOverScreen(float finalTime)
@@ -22,5 +25,12 @@ public class GameOverManager : MonoBehaviour
 
         gameOverText.text = "GAME OVER";
         gameOverText.gameObject.SetActive(true);
+        restartButton.SetActive(true);
+    }
+    
+    public void RestartGame()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class RepeatBackground : MonoBehaviour
 {
     public Transform player;
-    public float chunkLength;
+    public float chunkLength = 55f;
     public GameObject chunkPrefab;
     public int poolSize = 2;
 
@@ -18,7 +18,7 @@ public class RepeatBackground : MonoBehaviour
             
             // get the position of the chicken first
             Vector3 prefabPos = chunkPrefab.transform.position;
-            Vector3 spawnPos = new Vector3(5, prefabPos.y, i * chunkLength); // use it for the Y static movement 
+            Vector3 spawnPos = new Vector3(0, prefabPos.y,35 +( i * chunkLength )); // use it for the Y static movement 
             GameObject chunk = Instantiate(chunkPrefab, spawnPos, Quaternion.identity, transform); //we give the chunk, where to span, the identity to follow, and spawning mechanic
 
             chunkPool.Enqueue(chunk); // we add it
