@@ -14,7 +14,8 @@ public class RepeatBackground : MonoBehaviour
     {
         for (int i = 0; i < initialChunks; i++)
         {
-            Vector3 spawnPos = new Vector3(0, 0, i * chunkLength);
+            Vector3 prefabPos = chunkPrefab.transform.position;
+            Vector3 spawnPos = new Vector3(0, prefabPos.y, i * chunkLength);
             GameObject newChunk = Instantiate(chunkPrefab, spawnPos, Quaternion.identity, transform);
             activeChunks.Enqueue(newChunk);
         }

@@ -6,10 +6,10 @@ public class ChickenMovement : MonoBehaviour
     [Header("Movement Settings")]
     public float forwardSpeed = 4f;
     public float moveSpeed = 3f;
-    public float minHeight = 6f; 
-    public float maxHeight = 12f;
-    public float maxRight = 3f;
-    public float maxLeft = -3f;
+    public float minHeight = -3f; 
+    public float maxHeight = 3f;
+    public float maxRight = 8f;
+    public float maxLeft = 2f;
 
     void Update()
     {
