@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Chiken
+  - FlyingObstacles
   layers:
   - Default
   - TransparentFX

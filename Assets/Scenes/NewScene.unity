@@ -321,7 +321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 454967372}
   chunkLength: 190
-  chunkPrefab: {fileID: 8058702807417834490, guid: af18ffe1a5eb9534b95dd67f1e9e2a5a, type: 3}
+  chunkPrefab: {fileID: 7699330700700734525, guid: a113ebef917a05f4db4ebed86d0f08fe, type: 3}
   poolSize: 2
 --- !u!4 &254603932
 Transform:
