@@ -4,12 +4,18 @@ using UnityEngine;
 public class ChickenMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
-    public float forwardSpeed = 4f;
+    public float forwardSpeed = 7.5f;
     public float moveSpeed = 3f;
     public float minHeight = -3f; 
-    public float maxHeight = 3f;
+    public float maxHeight = 2f;
     public float maxRight = 8f;
     public float maxLeft = 2f;
+
+    void Start()
+    {
+        forwardSpeed = GameSettings.chickenForwardSpeed;
+        moveSpeed = GameSettings.chickenMoveSpeed;
+    }
 
     void Update()
     {
