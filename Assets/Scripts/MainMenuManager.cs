@@ -22,7 +22,8 @@ public class MainMenuManager : MonoBehaviour
     }
 
     public void StartEasy()
-    {
+    {   
+        PlayerPrefs.SetString("Difficulty", "Easy");
         GameSettings.chickenForwardSpeed = 5f; // slower
         GameSettings.chickenMoveSpeed = 2.5f;
         SceneManager.LoadScene("NewScene");
@@ -31,6 +32,7 @@ public class MainMenuManager : MonoBehaviour
     public void StartNormal()
     {
         GameSettings.chickenForwardSpeed = 7.5f; // default
+        PlayerPrefs.SetString("Difficulty", "Medium");
         SceneManager.LoadScene("NewScene");
     }
 
@@ -38,6 +40,7 @@ public class MainMenuManager : MonoBehaviour
     {
         GameSettings.chickenForwardSpeed = 12f; // faster
         GameSettings.chickenMoveSpeed = 5f;
+        PlayerPrefs.SetString("Difficulty", "Hard");
         SceneManager.LoadScene("NewScene");
     }
 

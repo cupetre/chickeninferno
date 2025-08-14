@@ -6,31 +6,43 @@ public class ChickenMovement : MonoBehaviour
     [Header("Movement Settings")]
     public float forwardSpeed = 7.5f;
     public float moveSpeed = 3f;
-    public float minHeight = -3f; 
-    public float maxHeight = 2f;
+    public float minHeight = -1f; 
+    public float maxHeight = 1f;
     public float maxRight = 8f;
+
     public float maxLeft = 2f;
 
     void Start()
     {
-        forwardSpeed = GameSettings.chickenForwardSpeed;
-        moveSpeed = GameSettings.chickenMoveSpeed;
+        string diff = PlayerPrefs.GetString("Difficulty", "Medium");
+
+        switch (diff)
+        {
+            case "Easy":
+                forwardSpeed = 5f;
+                moveSpeed = 2.5f;
+                break;
+            case "Medium":
+                forwardSpeed = 7.5f;
+                moveSpeed = 3f;
+                break;
+            case "Hard":
+                forwardSpeed = 12f;
+                moveSpeed = 5f;
+                break;
+        }
     }
 
     void Update()
     {
-        // Constant forward movement along world Z axis
         transform.Translate(Vector3.forward * forwardSpeed * Time.deltaTime, Space.World);
 
-        // Player input
-        float horizontal = Input.GetAxisRaw("Horizontal"); // A/D or Left/Right
-        float vertical = Input.GetAxisRaw("Vertical");     // W/S or Up/Down
+        float horizontal = Input.GetAxisRaw("Horizontal"); 
+        float vertical = Input.GetAxisRaw("Vertical");     
 
-        // Apply movement (world space)
         Vector3 movement = new Vector3(horizontal, vertical, 0) * moveSpeed * Time.deltaTime;
         transform.Translate(movement, Space.World);
 
-        // Clamp height
         Vector3 pos = transform.position;
         pos.y = Mathf.Clamp(pos.y, minHeight, maxHeight);
         pos.x = Mathf.Clamp(pos.x, maxLeft, maxRight);

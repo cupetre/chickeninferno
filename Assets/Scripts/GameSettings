@@ -1,4 +1,0 @@
-public static class GameSettings
-{
-    public static float chickenForwardSpeed = 4f;
-}

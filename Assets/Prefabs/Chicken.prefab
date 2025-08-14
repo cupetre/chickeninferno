@@ -128,8 +128,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardSpeed: 10
   moveSpeed: 3
-  minHeight: 2.5
-  maxHeight: 8.5
+  minHeight: 2
+  maxHeight: 6
   maxRight: 9
   maxLeft: 3
 --- !u!143 &2693516552033503590
