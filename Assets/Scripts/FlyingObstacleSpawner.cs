@@ -14,7 +14,6 @@ public class FlyingObstacleSpawner : MonoBehaviour
 
     void Start()
     {
-        // Match chicken movement bounds
         ChickenMovement cm = player.GetComponent<ChickenMovement>();
         minY = cm.minHeight;
         maxY = cm.maxHeight;

@@ -42657,6 +42657,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 385492333899673160, guid: 610683d25448eea4e8f6a2a79fac9813, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1201505278207932608, guid: 610683d25448eea4e8f6a2a79fac9813, type: 3}
       propertyPath: gameOverManager
       value: 
@@ -42665,6 +42669,34 @@ PrefabInstance:
       propertyPath: repeatBackground
       value: 
       objectReference: {fileID: 254603931}
+    - target: {fileID: 1201505278207932608, guid: 610683d25448eea4e8f6a2a79fac9813, type: 3}
+      propertyPath: hitEffects.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201505278207932608, guid: 610683d25448eea4e8f6a2a79fac9813, type: 3}
+      propertyPath: 'hitEffects.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2584144885890085385, guid: 0cce6157f975eee4dbb229fa00f63747, type: 3}
+    - target: {fileID: 1201505278207932608, guid: 610683d25448eea4e8f6a2a79fac9813, type: 3}
+      propertyPath: 'hitEffects.Array.data[1]'
+      value: 
+      objectReference: {fileID: 6111780402021197910, guid: 6c3f332676c9b7146a16b045cf9a680a, type: 3}
+    - target: {fileID: 1201505278207932608, guid: 610683d25448eea4e8f6a2a79fac9813, type: 3}
+      propertyPath: 'hitEffects.Array.data[2]'
+      value: 
+      objectReference: {fileID: 6157270102771017079, guid: dbaa043ffb682f24c926735fc6f1ca8b, type: 3}
+    - target: {fileID: 1201505278207932608, guid: 610683d25448eea4e8f6a2a79fac9813, type: 3}
+      propertyPath: 'hitEffects.Array.data[3]'
+      value: 
+      objectReference: {fileID: 5033180708955247871, guid: 152689d6752175f4fa353ae19681fb33, type: 3}
+    - target: {fileID: 1201505278207932608, guid: 610683d25448eea4e8f6a2a79fac9813, type: 3}
+      propertyPath: 'hitEffects.Array.data[4]'
+      value: 
+      objectReference: {fileID: 3784945155588612436, guid: b33d991b542eaae4bb87332955c73ce0, type: 3}
+    - target: {fileID: 1201505278207932608, guid: 610683d25448eea4e8f6a2a79fac9813, type: 3}
+      propertyPath: 'hitEffects.Array.data[5]'
+      value: 
+      objectReference: {fileID: 4163018424492857928, guid: 7a4dafba55b072242922877df48ee59c, type: 3}
     - target: {fileID: 1803918593959996871, guid: 610683d25448eea4e8f6a2a79fac9813, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.8

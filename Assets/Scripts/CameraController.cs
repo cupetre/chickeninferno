@@ -11,7 +11,6 @@ public class CameraController : MonoBehaviour
         {
             Vector3 currentPos = transform.position;
 
-            // Follow only forward movement (Z)
             currentPos.z = targetToFollow.position.z + fixed_dist.z;
 
             transform.position = currentPos;
